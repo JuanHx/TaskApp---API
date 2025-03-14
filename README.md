@@ -36,7 +36,7 @@ TaskApp/
 
 ### Clonar el Repositorio**
 
-git clone https://github.com/tu-usuario/taskApp.git
+git clone https://github.com/tu-usuario/TaskApp---API.git
 cd taskApp
 
 
