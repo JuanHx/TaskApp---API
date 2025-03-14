@@ -37,6 +37,7 @@ TaskApp/
 ### Clonar el Repositorio**
 
 git clone https://github.com/tu-usuario/TaskApp---API.git
+
 cd taskApp
 
 
@@ -74,7 +75,7 @@ La API estará disponible en: [http://localhost:5000]
 }
 ```
 
-### **Ejemplo de los Diferentes Estados **
+### **Ejemplo de los Diferentes Estados**
 ```json
 {
   "estado": 0, // Pendiente
