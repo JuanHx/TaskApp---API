@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>taskApp</name>
+    </assembly>
+    <members>
+        <member name="M:taskApp.Controllers.TaskController.Get">
+            <summary>
+            Obtiene todas las tareas registradas
+            </summary>
+            <returns>Lista de tareas</returns>
+        </member>
+        <member name="M:taskApp.Controllers.TaskController.Get(System.Int32)">
+            <summary>
+            Obtiene una tarea por ID
+            </summary>
+            <param name="id">ID de la tarea</param>
+            <returns>Objeto de la tarea</returns>
+        </member>
+        <member name="M:taskApp.Controllers.TaskController.Post(taskApp.Models.Tareas)">
+            <summary>
+            Crea una nueva tarea
+            </summary>
+            <param name="task">Objeto de la tarea a crear</param>
+            <returns>La tarea creada</returns>
+        </member>
+        <member name="M:taskApp.Controllers.TaskController.Put(System.Int32,taskApp.Models.Tareas)">
+            <summary>
+            Actualiza una tarea mediante el ID
+            </summary>
+            <param name="id">ID de la tarea</param>
+            <returns>No Content si se eliminó correctamente</returns>
+        </member>
+        <member name="M:taskApp.Controllers.TaskController.Delete(System.Int32)">
+            <summary>
+            Elimina una tarea por ID
+            </summary>
+            <param name="id">ID de la tarea</param>
+            <returns>No Content si se eliminó correctamente</returns>
+        </member>
+        <member name="M:taskApp.Controllers.TaskController.GetByEstado(taskApp.Models.Tareas.Estado)">
+            <summary>
+            Filtra las tareas segun el estado enviado
+            </summary>
+            <param name="estado">Estado de la tarea</param>
+            <returns>Lista de tareas encontradas</returns>
+        </member>
+        <member name="T:taskApp.Data.AppDBContext">
+            <summary>
+            Contexto de base de datos para la aplicación de tareas.
+            </summary>
+        </member>
+        <member name="M:taskApp.Data.AppDBContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{taskApp.Data.AppDBContext})">
+            <summary>
+            Constructor que acepta opciones de configuración para el contexto.
+            </summary>
+            <param name="options">Opciones de configuración para el contexto.</param>
+        </member>
+        <member name="P:taskApp.Data.AppDBContext.Tasks">
+            <summary>
+            Conjunto de datos que representa las tareas.
+            </summary>
+        </member>
+        <member name="M:taskApp.Data.AppDBContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Configura el modelo de datos mediante la API Fluent.
+            </summary>
+            <param name="modelBuilder">Constructor del modelo.</param>
+        </member>
+        <member name="T:taskApp.Models.Tareas">
+            <summary>
+            Representa una tarea en la aplicación.
+            </summary>
+        </member>
+        <member name="P:taskApp.Models.Tareas.id">
+            <summary>
+            Identificador único de la tarea.
+            </summary>
+        </member>
+        <member name="P:taskApp.Models.Tareas.titulo">
+            <summary>
+            Título de la tarea.
+            </summary>
+        </member>
+        <member name="P:taskApp.Models.Tareas.descripcion">
+            <summary>
+            Descripción de la tarea.
+            </summary>
+        </member>
+        <member name="P:taskApp.Models.Tareas.estado">
+            <summary>
+            Estado actual de la tarea.
+            </summary>
+        </member>
+        <member name="P:taskApp.Models.Tareas.fecha_creacion">
+            <summary>
+            Fecha de creación de la tarea.
+            </summary>
+        </member>
+        <member name="P:taskApp.Models.Tareas.fecha_actualizacion">
+            <summary>
+            Fecha de la última actualización de la tarea.
+            </summary>
+        </member>
+        <member name="T:taskApp.Models.Tareas.Estado">
+            <summary>
+            Enum que representa los posibles estados de una tarea.
+            </summary>
+        </member>
+        <member name="T:Program">
+            <summary>
+            Clase principal para configurar y ejecutar la aplicación web.
+            </summary>
+        </member>
+        <member name="M:Program.Main(System.String[])">
+            <summary>
+            Punto de entrada principal para la aplicación.
+            </summary>
+            <param name="args">Argumentos de línea de comandos.</param>
+        </member>
+    </members>
+</doc>
