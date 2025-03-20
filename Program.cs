@@ -27,6 +27,17 @@ public class Program
         // Agrega servicios para la generación de Swagger.
         builder.Services.AddSwaggerGen();
 
+        var corsPolicyName = "AllowGithubPages";
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy(corsPolicyName, policy =>
+            {
+                policy.WithOrigins("https://juanhx.github.io/") // Reemplaza con tu URL real
+                      .AllowAnyMethod()
+                      .AllowAnyHeader();
+            });
+        });
+
         var app = builder.Build();
 
         // Configura Swagger para la documentación de la API.
