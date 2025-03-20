@@ -2,14 +2,14 @@ using Microsoft.EntityFrameworkCore;
 using taskApp.Data;
 
 /// <summary>
-/// Clase principal para configurar y ejecutar la aplicación web.
+/// Clase principal para configurar y ejecutar la aplicaciÃ³n web.
 /// </summary>
 public class Program
 {
     /// <summary>
-    /// Punto de entrada principal para la aplicación.
+    /// Punto de entrada principal para la aplicaciÃ³n.
     /// </summary>
-    /// <param name="args">Argumentos de línea de comandos.</param>
+    /// <param name="args">Argumentos de lÃ­nea de comandos.</param>
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
@@ -21,15 +21,26 @@ public class Program
         // Agrega servicios de controladores.
         builder.Services.AddControllers();
 
-        // Agrega servicios para la exploración de endpoints de API.
+        // Agrega servicios para la exploraciÃ³n de endpoints de API.
         builder.Services.AddEndpointsApiExplorer();
 
-        // Agrega servicios para la generación de Swagger.
+        // Agrega servicios para la generaciÃ³n de Swagger.
         builder.Services.AddSwaggerGen();
+
+        var corsPolicyName = "AllowGithubPages";
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy(corsPolicyName, policy =>
+            {
+                policy.WithOrigins("https://juanhx.github.io/") // Reemplaza con tu URL real
+                      .AllowAnyMethod()
+                      .AllowAnyHeader();
+            });
+        });
 
         var app = builder.Build();
 
-        // Configura Swagger para la documentación de la API.
+        // Configura Swagger para la documentaciÃ³n de la API.
         app.UseSwagger();
         app.UseSwaggerUI(c =>
         {
@@ -37,20 +48,20 @@ public class Program
             c.RoutePrefix = string.Empty;
         });
 
-        // Configura la autorización.
+        // Configura la autorizaciÃ³n.
         app.UseAuthorization();
 
         // Mapea los controladores.
         app.MapControllers();
 
-        // Asegura que la base de datos esté creada.
+        // Asegura que la base de datos estÃ© creada.
         using (var scope = app.Services.CreateScope())
         {
             var context = scope.ServiceProvider.GetRequiredService<AppDBContext>();
             context.Database.EnsureCreated();
         }
 
-        // Ejecuta la aplicación.
+        // Ejecuta la aplicaciÃ³n.
         app.Run();
     }
 }
