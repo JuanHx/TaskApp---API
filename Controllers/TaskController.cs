@@ -94,21 +94,21 @@ namespace taskApp.Controllers
         }
 
         /// <summary>
-        /// Elimina una tarea por ID
+        /// Elimina una o varias tareas por sus IDs
         /// </summary>
-        /// <param name="id">ID de la tarea</param>
-        /// <returns>No Content si se eliminó correctamente</returns>
-        [HttpDelete("{id:int}")]
-        public async Task<ActionResult> Delete(int id)
+        /// <param name="ids">Lista de IDs de las tareas a eliminar</param>
+        /// <returns>No Content si se eliminaron correctamente</returns>
+        [HttpDelete]
+        public async Task<ActionResult> Delete([FromBody] List<int> ids)
         {
-            var task = await _context.Tasks.FindAsync(id);
+            var tasks = await _context.Tasks.Where(t => ids.Contains(t.id)).ToListAsync();
 
-            if (task == null)
+            if (tasks == null || tasks.Count == 0)
             {
                 return NotFound();
             }
 
-            _context.Tasks.Remove(task);
+            _context.Tasks.RemoveRange(tasks);
             await _context.SaveChangesAsync();
 
             return NoContent();
